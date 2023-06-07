@@ -9,6 +9,7 @@ def fortune_generation
     # Use sampler for each fortune cookie
     first_outcome  = fortune_cookie1.sample.strip
     second_outcome = fortune_cookie2.sample.strip
+    outcome_name   = "#{first_outcome}_#{second_outcome}".tr " ", "_"
 
     if first_outcome == second_outcome
       puts "First fortune: #{first_outcome} Second fortune: #{second_outcome}"
@@ -18,6 +19,11 @@ def fortune_generation
       ## Create a new document based on remembered datapoint
       open("_outcomes/remembered_futures/fortune.txt", "a") { |f|
         f.puts first_outcome
+      }
+
+      ## Create a new prolog knowledge base section upon appending.
+      open("_knowledgebase/#{outcome_name}.pl", "a") { |f|
+        f.puts outcome_name
       }
     else
       puts "First fortune: #{first_outcome} Second fortune: #{second_outcome}"
