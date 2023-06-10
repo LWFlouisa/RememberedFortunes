@@ -2,7 +2,7 @@
 A method of machine learning that involves remembering fortunes already told, and using said predictions to retrain the model.
 
 ## Main Fortune Machine
-~~~
+~~~ruby
 def fortune_generation
   iteration = File.read("_ai/gen_limit/limitation.txt").strip.to_i
 
